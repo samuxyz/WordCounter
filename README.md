@@ -1,0 +1,2 @@
+# WordCounter
+Bootstrap + AngularJS training.

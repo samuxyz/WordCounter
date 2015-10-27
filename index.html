@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="counter">
 	<head>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/app.js"></script>
 	</head>
 	<body>
 		<div class="container navbar navbar-default navbar-static-top navbar-new">
@@ -47,24 +49,24 @@
 				
 			</div>
 		</div>
-		<div class="container well well-lg">
+		<div class="container well well-lg" ng-controller="AlignController as ac">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="btn-group">
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" ng-click="ac.setAlign('text-left')">
 							<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" ng-click="ac.setAlign('text-center')">
 							<span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" ng-click="ac.setAlign('text-right')">
 							<span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" ng-click="ac.setAlign('text-justify')">
 							<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
 						</button>
 					</div>
-					<button class="btn btn-default" type="submit">
+					<button id="b" class="btn btn-default" type="submit" ng-click="ac.cancelText()">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Cancel
 					</button>
 				</div>
@@ -73,10 +75,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					
-					<textarea class="form-control" rows="10" cols="100">Start writing, or copy and paste from a document...</textarea>
+					<textarea id="textarea" class="form-control" rows="10" cols="100" ng-class="ac.setClass()" ng-keypress="ac.count()">Start writing, or copy and paste from a document...</textarea>
 					<br>
 					<p>
-						There are <span class="badge">0</span> words and <span class="badge">0</span> characters
+						There are <span class="badge">{{ ac.getWords() }}</span> words and <span class="badge">{{ ac.getCharacters()}}</span> characters
 					</p>
 				</div>
 			</div>

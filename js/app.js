@@ -18,12 +18,10 @@
 		this.setClass = function(){
 			return align;
 		}
-		//this.cancelText = function(){
-			//$('#textarea').empty();
-		//}
-		$('#b').on("click", function(){
+		this.cancelText = function(){
 			$('#textarea').empty();
-		});
+		}
+		
 		this.count = function(){
 			
 			characters = $('#textarea').val().length;
